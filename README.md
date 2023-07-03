@@ -1,7 +1,7 @@
 # markdown_obsidian_katex
 
 This is an extension for [Python Markdown](https://python-markdown.github.io/)
-which adds [KaTeX](https://katex.org/) support that triggers on `$$` character.
+which adds [KaTeX](https://katex.org/) support that triggers on `$inline$` katex and `$$` block katex.
 
 ```
 $$
