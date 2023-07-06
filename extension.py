@@ -111,7 +111,7 @@ def md_inline2html(inline_text, default_options=None):
     return tex2html(inline_text, options)
 
 
-INLINE_DELIM_RE = re.compile(r'(\$[^\s\$]+?\$)')
+INLINE_DELIM_RE = re.compile(r'(\$[^\n\r\t\$]+?\$)')
 InlineCodeItem = typ.NamedTuple('InlineCodeItem', [('inline_text', str), (
     'start', int), ('end', int)])
 
