@@ -18,6 +18,8 @@ from markdown.extensions import Extension
 from markdown.preprocessors import Preprocessor
 from markdown.postprocessors import Postprocessor
 from . import wrapper
+from .wrapper import KatexError
+
 try:
     import builtins
 except ImportError:
@@ -79,7 +81,12 @@ def tex2html(tex, options=None):
     if options:
         options.pop('no_inline_svg', None)
         options.pop('insert_fonts_css', None)
-    result = wrapper.tex2html(tex, options)
+    # Trying to render KaTeX. If failed -- use raw string
+    try:
+        result = wrapper.tex2html(tex, options)
+    except KatexError:
+        result = tex
+        
     if no_inline_svg:
         result = svg2img(result)
     return result
